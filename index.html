@@ -115,6 +115,16 @@
   function changeBColor(evt){
     console.log(evt);
     const $inputs = $('input.form-control');
+    //$i
+    let red = $('input.form-control')
+      .eq(0)
+      .val();
+    let blue = $('input.form-control')
+      .eq(1)
+      .val();
+    let green = $('input.form-control')
+      .eq(2)
+      .val();
     const rbgValues = [];
     for(let val of $inputs){
       console.log(val.value);
@@ -125,6 +135,8 @@
     console.log(r,b,g);
 
     $('body').css('background-color',`rgb(${r},${g},${b})`);
+    $('body').css('background-color',`rgb(${red},${green},${blue})`);
+
     console.log($('body'));
     console.log(`rgb(${r},${g},${b})`);
     //rgb(255, 255, 255);
