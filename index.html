@@ -74,6 +74,7 @@
 </div>
 <script src="https://unpkg.com/jquery"></script>
 <script>
+  'use strict';
   // Add your code here!
   //Problem #1
   // console.log($('article img'));
@@ -99,10 +100,79 @@
     .append($('<p>paragraph</p>'));
 
   //problem #6
-  function changeBColor(){
+  //1.Make an event Listener that listens for:
+  //-the "Change" event. Callback to update body bkgColor
+  //
+
+  /**Function changeBColor()
+   * Takes no parameters
+   * 1. Creates a rgb color out of inputs Red,Blue,Green
+   * rgb(red.value,Blue.value,green.value)
+   * 2. Uses jQuery to select the body, update the-
+   * background color.
+   *
+  */
+  function changeBColor(evt){
+    console.log(evt);
+    const $inputs = $('input.form-control');
+    const rbgValues = [];
+    for(let val of $inputs){
+      console.log(val.value);
+      rbgValues.push(val.value);
+    }
+    console.log(rbgValues);
+    const [r,b,g] = rbgValues;
+    console.log(r,b,g);
+
+    $('body').css('background-color',`rgb(${r},${g},${b})`);
+    console.log($('body'));
+    console.log(`rgb(${r},${g},${b})`);
+    //rgb(255, 255, 255);
 
   }
-  $('input')
+
+  //   <div class="row mb-5">
+
+  $('body').on('change',changeBColor);
+  // console.log($('input.form-control'));
+  // console.log($('input.form-control').val());
+
+  //Event Handler
+  //Event Delegate:
+  //$('container').on('event','element with this class',callbackfunction)
+
+
+  //Problem #7
+
+  //Add an event listener so that when you click on the image,
+  //it is removed from the DOM.
+
+  //An event listener via Jquery and the .on Method
+  //Listens for a click
+  //On a target? The event target = image.
+  //When the event listener hears a click, on an image:
+  //.remove()
+
+  //1. Function to remove the picture
+    //Creates a constant = event.target
+    //Uses the .remove();
+  /**Function removePicture(evt)
+   * Creates the evt target constant = evt target
+   * calls the .remove() on the evt target.
+  */
+ function removePicture(evt){
+   console.log(evt);
+  //  const pictureElem = evt.target;
+  //  pictureElem.remove();
+  evt.target.remove();
+ }
+
+  //2.Event listener on the body
+  //Determines whether the target is a picture
+  //Attribute pup in cup
+
+  $('body').on('click','img',removePicture);
+
 
 
 
