@@ -113,9 +113,18 @@
    *
   */
   function changeBColor(evt){
-    console.log(evt);
+    // console.log(evt);
     const $inputs = $('input.form-control');
+    // console.log($inputs.each((index)=>index));
     //$i
+    const obj = {};
+
+    $('input.form-control').each(function( index ) {
+      console.log( index + ": " + $( this ).val() );
+      obj[index] = $(this).val();
+    });
+
+
     let red = $('input.form-control')
       .eq(0)
       .val();
@@ -127,19 +136,23 @@
       .val();
     const rbgValues = [];
     for(let val of $inputs){
-      console.log(val.value);
+      // console.log(val.value);
       rbgValues.push(val.value);
     }
-    console.log(rbgValues);
+    // console.log(rbgValues);
     const [r,b,g] = rbgValues;
-    console.log(r,b,g);
+    // console.log(r,b,g);
 
-    $('body').css('background-color',`rgb(${r},${g},${b})`);
-    $('body').css('background-color',`rgb(${red},${green},${blue})`);
+    // $('body').css('background-color',`rgb(${r},${g},${b})`);
+    // $('body').css('background-color',`rgb(${red},${green},${blue})`);
+    $('body').css('background-color',`rgb(${obj['0']},${obj['2']},${obj['1']})`);
 
-    console.log($('body'));
-    console.log(`rgb(${r},${g},${b})`);
+
+
+    // console.log($('body'));
+    // console.log(`rgb(${r},${g},${b})`);
     //rgb(255, 255, 255);
+    return obj;
 
   }
 
@@ -184,15 +197,6 @@
   //Attribute pup in cup
 
   $('body').on('click','img',removePicture);
-
-
-
-
-
-
-
-
-
 
 </script>
 </body>
